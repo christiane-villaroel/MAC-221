@@ -16,15 +16,20 @@ struct SmileyFace: View {
             ZStack{
                 Circle()
                     .frame(width:300)
-                HStack{
-                    Circle()
-                        .frame(width:20)
-                        .foregroundColor(.white)
-                
-                    Circle()
-                        .frame(width:20)
-                        .foregroundColor(.white)
+                VStack{
+                    HStack(spacing:50){
+                        Circle()
+                            .frame(width:50)
+                            .foregroundColor(.white)
                     
+                        Circle()
+                            .frame(width:50)
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    Rectangle()
+                        .frame(width:100,height: 10)
+                        .foregroundColor(.white)
                 }
             }
             

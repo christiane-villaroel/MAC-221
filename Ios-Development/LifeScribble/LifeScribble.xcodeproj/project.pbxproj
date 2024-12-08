@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2AD1291E2D062A3E00844B06 /* MijickCalendarView in Frameworks */ = {isa = PBXBuildFile; productRef = 2AD1291D2D062A3E00844B06 /* MijickCalendarView */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2ACDAAE22D02953E003CD57F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AD1291E2D062A3E00844B06 /* MijickCalendarView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = LifeScribble;
 			packageProductDependencies = (
+				2AD1291D2D062A3E00844B06 /* MijickCalendarView */,
 			);
 			productName = LifeScribble;
 			productReference = 2ACDAAD12D02953C003CD57F /* LifeScribble.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 2ACDAAC82D02953C003CD57F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2AD1291C2D062A3E00844B06 /* XCRemoteSwiftPackageReference "CalendarView" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2ACDAAD22D02953C003CD57F /* Products */;
 			projectDirPath = "";
@@ -552,6 +561,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2AD1291C2D062A3E00844B06 /* XCRemoteSwiftPackageReference "CalendarView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mijick/CalendarView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2AD1291D2D062A3E00844B06 /* MijickCalendarView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AD1291C2D062A3E00844B06 /* XCRemoteSwiftPackageReference "CalendarView" */;
+			productName = MijickCalendarView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2ACDAAC92D02953C003CD57F /* Project object */;
 }

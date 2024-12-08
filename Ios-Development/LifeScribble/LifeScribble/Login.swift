@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct Login: View {
+    @State var username = ""
+    @State var password = ""
+    
     var body: some View {
-        Text("Login")
+        VStack{
+            TextField("Username",text: $username)
+                .padding()
+            SecureField("Password",text: $password)
+                .padding()
+        }//end vstack
     }
 }
 
 #Preview {
     Login()
+        .environmentObject(JournalStore())
 }

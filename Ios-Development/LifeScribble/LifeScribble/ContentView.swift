@@ -7,29 +7,38 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack(spacing: 10) {
                 HStack{
-                    Image(systemName: "book.closed.fill")
+                    Image("book")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 50,height: 100)
-                    Image(systemName: "pencil")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50,height: 50)
-                        .rotationEffect(.degrees(-46))
+                        .frame(width: 400,height: 150)
+                        .foregroundStyle(Color.blue)
+                        .overlay(content: {
+                            Image(systemName: "pencil")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50,height: 50)
+                                .offset(x: -10, y: -30)
+                                .foregroundColor(Color.blue)
+                            
+                        })
+                        
                 }
                 Text("Welcome to Life Scribble")
-                NavigationLink(destination: Login(), label: {Text("Go To Login")})
+                NavigationLink(destination: JournalList(), label: {Text("Go To Journals")})
             }//End VStack
             .navigationTitle("Welcome")
+            .presentationBackground(Color.blue)
         }//End Nav View
     }//body
 }//content
 
 #Preview {
     ContentView()
+        .environmentObject(JournalStore())
 }

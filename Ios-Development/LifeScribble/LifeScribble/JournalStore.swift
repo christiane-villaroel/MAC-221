@@ -9,10 +9,16 @@ import SwiftUI
 
 class JournalStore:ObservableObject{
     @Published var entries = [Entry]()
-    @Published var preview: Bool
-    init(preview: Bool = false){
-        self.preview = preview
-        fetchEntries()
+    
+    init(){
+      
+        let calendar = Calendar.current
+        entries = [
+            Entry(title:"Entry 1",text: "body 1",date: calendar.date(from: DateComponents(year:2024,month:12,day:5))!),
+            Entry(title:"Entry 2",text: "body 2",date: calendar.date(from: DateComponents(year:2024,month:12,day:6))!),
+            Entry(title:"Entry 3",text: "body 3",date: calendar.date(from: DateComponents(year:2024,month:12,day:7))!),
+            Entry(title:"Entry 4", text: "body 4", date: calendar.date(from: DateComponents(year:2024,month:12,day:8))!)
+        ]
     }
     func addEntry(_ entry: Entry){
         entries.append(entry)
@@ -39,15 +45,13 @@ class JournalStore:ObservableObject{
     }
     
     func fetchEntries(){
-        if preview{
-                let calendar = Calendar.current
-                entries = [
-                    Entry(title:"Entry 1",text: "body 1",date: calendar.date(from: DateComponents(year:2024,month:12,day:5))!),
-                    Entry(title:"Entry 2",text: "body 2",date: calendar.date(from: DateComponents(year:2024,month:12,day:6))!),
-                    Entry(title:"Entry 3",text: "body 3",date: calendar.date(from: DateComponents(year:2024,month:12,day:7))!),
-                    Entry(title:"Entry 4", text: "body 4", date: calendar.date(from: DateComponents(year:2024,month:12,day:8))!)
-                ]
-        }
+        let calendar = Calendar.current
+        entries = [
+            Entry(title:"Entry 1",text: "body 1",date: calendar.date(from: DateComponents(year:2024,month:12,day:5))!),
+            Entry(title:"Entry 2",text: "body 2",date: calendar.date(from: DateComponents(year:2024,month:12,day:6))!),
+            Entry(title:"Entry 3",text: "body 3",date: calendar.date(from: DateComponents(year:2024,month:12,day:7))!),
+            Entry(title:"Entry 4", text: "body 4", date: calendar.date(from: DateComponents(year:2024,month:12,day:8))!)
+        ]
     }
 }
 struct Entry: Identifiable {

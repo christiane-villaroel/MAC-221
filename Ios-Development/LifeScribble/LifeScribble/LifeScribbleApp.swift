@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct LifeScribbleApp: App {
     @StateObject var journalStore = JournalStore()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

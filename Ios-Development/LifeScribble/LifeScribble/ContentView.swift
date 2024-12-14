@@ -30,7 +30,7 @@ struct ContentView: View {
                         
                 }
                 Text("Welcome to Life Scribble")
-                NavigationLink(destination: JournalList(), label: {Text("Go To Journals")})
+              /*  NavigationLink(destination: JournalList(), label: {Text("Go To Journals")})*/
             }//End VStack
             .navigationTitle("Welcome")
             .presentationBackground(Color.blue)

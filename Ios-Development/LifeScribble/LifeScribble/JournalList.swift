@@ -9,8 +9,10 @@ import SwiftUI
 
 struct JournalList: View {
     @EnvironmentObject var JournalStore:JournalStore
+    @Binding var dateSelected: DateComponents?
     @State var title:String = ""
     @State var text:String = ""
+    
     @State var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
@@ -33,6 +35,14 @@ struct JournalList: View {
 
 
 #Preview {
-    JournalList()
-        .environmentObject(JournalStore())
+    var dateComponents: DateComponents {
+        var dateComponents = Calendar.current.dateComponents([
+            .month, .day,.year
+        ], from: Date())
+        dateComponents.timeZone = TimeZone.current
+        dateComponents.calendar = Calendar(identifier: .gregorian)
+        return dateComponents
+    }
+    JournalList(dateSelected: .constant(dateComponents))
+        .environmentObject(JournalStore(preview: true))
 }

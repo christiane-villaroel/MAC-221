@@ -9,8 +9,9 @@ import SwiftUI
 
 class JournalStore:ObservableObject{
     @Published var entries = [Entry]()
-    
-    init(){
+    @Published var preview : Bool
+    init(preview: Bool = false){
+        self.preview = preview
       
         let calendar = Calendar.current
         entries = [
@@ -59,4 +60,5 @@ struct Entry: Identifiable {
     var title: String
     var text: String
     var date: Date
+    var image: Image = Image(systemName: "circle.fill")
 }

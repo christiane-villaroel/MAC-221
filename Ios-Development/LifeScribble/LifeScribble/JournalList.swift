@@ -12,6 +12,7 @@ struct JournalList: View {
     @Binding var dateSelected: DateComponents?
     @State var title:String = ""
     @State var text:String = ""
+    //@State var entries :[Entry]
     
     @State var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -20,7 +21,46 @@ struct JournalList: View {
     }()
     
     var body: some View {
-       NavigationView {
+        NavigationView{
+            
+            // end if statement
+            if let dateSelected {
+                let foundEntry = JournalStore.entries.filter{$0.date.startOfDay == dateSelected.date!.startOfDay}
+                List{
+                    ForEach(foundEntry) { entry in
+                        
+                        NavigationLink(destination: EntryDetails(entry:.constant(entry))){
+                            VStack{
+                                Text(entry.title)
+                                    
+                            }
+                        }// end navlink
+                    }// end foreach
+                }// end list
+            }// end if statement
+            else{
+                Text("No Journal Entries Found")
+                    .font(.headline)
+                    .foregroundStyle(Color.gray)
+            }
+        }//end navView
+           /* Group{
+                if let dateSelected {
+                    let foundEntry = JournalStore.entries.filter{$0.date.startOfDay == dateSelected.date!.startOfDay}
+                    List{
+                        ForEach(foundEntry) { $entry in
+                            NavigationLink(destination: EntryDetails(entry:$entry)){
+                                VStack{
+                                    Text(entry.title)
+                                }
+                            }
+                        }// end foreach
+                    }// end list
+                }// dateSelect
+            }//Group */
+            
+        }//NavigationView
+      /* NavigationView {
            List($JournalStore.entries){ $entry in
                NavigationLink(destination: EntryDetails(entry: $entry)) {
                    VStack{
@@ -29,8 +69,8 @@ struct JournalList: View {
                }//end Navlink
             }//end List
             .navigationBarTitle("Journal List")
-        }
-    }
+        }*/
+    
 }
 
 
@@ -43,6 +83,6 @@ struct JournalList: View {
         dateComponents.calendar = Calendar(identifier: .gregorian)
         return dateComponents
     }
-    JournalList(dateSelected: .constant(dateComponents))
+    JournalList(dateSelected : .constant(dateComponents))
         .environmentObject(JournalStore(preview: true))
 }

@@ -17,7 +17,10 @@ struct JournalCalendar: View {
                 CalendarView(interval: DateInterval(start: .distantPast, end: .distantFuture),journalStore: JournalStore, dateSelected: $dateSelected, displayEntries: $displayEntries)
                 
             }
-                .navigationBarTitle("Journal Calendar")
+            .sheet(isPresented: $displayEntries){
+                JournalList(dateSelected: $dateSelected)
+            }
+            .navigationBarTitle("Journal Calendar")
         }
     }
 }

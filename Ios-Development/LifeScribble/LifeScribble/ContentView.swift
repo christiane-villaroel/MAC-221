@@ -9,32 +9,45 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
     var body: some View {
-        NavigationView{
-            VStack(spacing: 10) {
-                HStack{
-                    Image("book")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 400,height: 150)
-                        .foregroundStyle(Color.blue)
-                        .overlay(content: {
-                            Image(systemName: "pencil")
+          
+            NavigationView{
+                ZStack{
+                    Color.green
+                        .ignoresSafeArea()
+                    VStack{
+                        Text("Welcome to Life Scribble")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        
+                            Image("notebook")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 50,height: 50)
-                                .offset(x: -10, y: -30)
-                                .foregroundColor(Color.blue)
+                                .frame(width: 300,height: 150)
+                                //.backgroundStyle(Color.myGreen)
+                       
+                        NavigationLink(destination: Login(), label: {
+                            Text("Login")
+                                .fontWeight(.semibold)
+                                .padding(10)
+                                .background(Color.blue)
+                                .cornerRadius(8)
+                                .shadow(color: Color.blue.opacity(0.5), radius: 10, x: 0, y: 10)
                             
                         })
-                        
-                }
-                Text("Welcome to Life Scribble")
-              /*  NavigationLink(destination: JournalList(), label: {Text("Go To Journals")})*/
-            }//End VStack
-            .navigationTitle("Welcome")
-            .presentationBackground(Color.blue)
-        }//End Nav View
+                    }//End VStack
+                 
+                
+                    .foregroundColor(.myGreen)
+                    
+                }//end zstack
+            }//End Nav View
+            
+            
+          
+    
+        
     }//body
 }//content
 
